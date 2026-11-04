@@ -2,42 +2,43 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/images/logo.svg" type="image/svg+xml">
     <link rel="stylesheet" href="/css/style.css">
-    <title>Booking Barbershop</title>
+    <title>Barber King</title>
 </head>
 <body>
-  <div class="container">
-    <h1>Booking Barbershop</h1>
+  <main class="split-layout">
+    <section class="brand-panel">
+      <img src="/images/logo.svg" alt="Logo Barbershop" class="logo">
+      <h1>Booking Barbershop</h1>
+      <p class="brand-tagline">Masuk dulu, pilih layanan dan jadwal, lalu tunggu konfirmasi dari kami.</p>
 
-    <form id="bookingForm" class="booking-form">
-      <label>Nama:
-        <input type="text" name="customer_name" required>
-      </label>
+      <div id="serviceSection" class="service-section" hidden>
+        <h2>Layanan</h2>
+        <ul id="serviceList" class="service-list"></ul>
+      </div>
+    </section>
 
-      <label>No HP:
-        <input type="tel" name="customer_phone" required>
-      </label>
+    <section class="form-panel">
+      <div class="form-panel-inner">
+        <h2>Masuk Sebagai</h2>
+        <div class="role-choices">
+          <a href="/customer-login.html" class="role-card">
+            <span class="role-card-title">Pelanggan</span>
+            <span class="role-card-text">Booking jadwal di barbershop</span>
+          </a>
+          <a href="/admin-login.html" class="role-card">
+            <span class="role-card-title">Admin</span>
+            <span class="role-card-text">Kelola booking yang masuk</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
 
-      <label>Layanan:
-        <select name="service_id" id="serviceSelect" required>
-          <option value="">-- Pilih layanan --</option>
-        </select>
-      </label>
-
-      <label>Tanggal:
-        <input type="date" name="booking_date" required>
-      </label>
-
-      <label>Jam:
-        <input type="time" name="booking_time" required>
-      </label>
-
-      <button type="submit">Booking</button>
-    </form>
-    <a href="/admin-login.html" class="admin-link">Login sebagai Admin</a>
-  </div>
-
-  <script src="/js/toast.js"></script>
-  <script src="/js/booking.js"></script>
+  <script src="/js/format.js"></script>
+  <script src="/js/service-list.js"></script>
+  <script>loadServiceList().catch((error) => console.error('Gagal load layanan:', error));</script>
 </body>
 </html>

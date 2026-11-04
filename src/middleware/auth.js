@@ -1,26 +1,39 @@
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
-function authMiddleware(req, res, next){
-    const authHeader = req.headers.authorization;
+// Token pelanggan dan admin ditandatangani pakai secret yang sama,
+// jadi role di dalam token wajib dicek biar pelanggan nggak bisa akses fitur admin.
+function requireRole(role) {
+    return (req, res, next) => {
+        const authHeader = req.headers.authorization;
 
-    if (!authHeader){
-        return res.status(401).json({ error : 'Format header tidak valid' });
-    }
+        if (!authHeader){
+            return res.status(401).json({ error : 'Format header tidak valid' });
+        }
 
-    const token = authHeader.split(' ')[1];
+        const token = authHeader.split(' ')[1];
 
-    if (!token){
-        return res.status(401).json({ error : 'Format header tidak valid' });
-    }
+        if (!token){
+            return res.status(401).json({ error : 'Format header tidak valid' });
+        }
 
-    try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        req.admin = decoded;
+        let decoded;
+        try {
+            decoded = jwt.verify(token, process.env.JWT_SECRET, { algorithms: ['HS256'] });
+        } catch (err) {
+            return res.status(401).json({ error: 'Token tidak valid atau expired' })
+        }
+
+        if (decoded.role !== role) {
+            return res.status(403).json({ error: 'Kamu nggak punya akses ke fitur ini' });
+        }
+
+        req.auth = decoded;
         next();
-    } catch (err) {
-        return res.status(401).json({ error: 'Token tidak valid atau expired' })
-    }
+    };
 }
 
-module.exports = authMiddleware;
+module.exports = {
+    requireAdmin: requireRole('admin'),
+    requireCustomer: requireRole('customer'),
+};

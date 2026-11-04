@@ -2,26 +2,41 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/images/logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/css/style.css">
   <title>Admin Login</title>
 </head>
 <body>
-  <div class="login-container">
-    <h1>Admin Login</h1>
+  <main class="split-layout">
+    <section class="brand-panel">
+      <img src="/images/logo.svg" alt="Logo Barbershop" class="logo">
+      <h1>Admin Login</h1>
+      <p class="brand-tagline">Khusus pengelola barbershop, buat ngecek dan memproses booking.</p>
+    </section>
 
-    <form id="loginForm" class="login-form">
-      <label>Username:
-        <input type="text" name="username" required>
-      </label>
+    <section class="form-panel">
+      <div class="form-panel-inner form-panel-narrow">
+        <h2>Masuk ke Dashboard</h2>
 
-      <label>Password:
-        <input type="password" name="password" required>
-      </label>
+        <form id="loginForm" class="login-form">
+          <label>Username:
+            <input type="text" name="username" autocomplete="username" required>
+          </label>
 
-      <button type="submit">Login</button>
-    </form>
-  </div>
+          <label>Password:
+            <input type="password" name="password" autocomplete="current-password" required>
+          </label>
+
+          <button type="submit">Login</button>
+        </form>
+        <a href="/" class="panel-link">Kembali ke halaman awal</a>
+      </div>
+    </section>
+  </main>
 
   <script src="/js/toast.js"></script>
+  <script src="/js/password-toggle.js"></script>
   <script src="/js/admin-login.js"></script>
 </body>
+</html>

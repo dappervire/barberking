@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/images/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/style.css">
+  <title>Daftar Akun</title>
+</head>
+<body>
+  <main class="split-layout">
+    <section class="brand-panel">
+      <img src="/images/logo.svg" alt="Logo Barbershop" class="logo">
+      <h1>Daftar Akun</h1>
+      <p class="brand-tagline">Sekali daftar, nama dan nomor HP kamu otomatis kepakai setiap booking.</p>
+    </section>
+
+    <section class="form-panel">
+      <div class="form-panel-inner form-panel-narrow">
+        <h2>Bikin Akun Baru</h2>
+
+        <form id="customerRegisterForm" class="login-form">
+          <label>Nama:
+            <input type="text" name="name" autocomplete="name" maxlength="100" required>
+          </label>
+
+          <label>No HP:
+            <input type="tel" name="phone" autocomplete="username" placeholder="08xxxxxxxxxx" pattern="[0-9]{10,15}" title="10-15 digit angka, tanpa spasi atau tanda +" required>
+          </label>
+
+          <label>Password:
+            <input type="password" name="password" autocomplete="new-password" placeholder="Minimal 8 karakter" minlength="8" required>
+          </label>
+
+          <label>Ulangi Password:
+            <input type="password" name="password_confirm" autocomplete="new-password" required>
+          </label>
+
+          <button type="submit">Daftar</button>
+        </form>
+        <a href="/customer-login.html" class="panel-link">Sudah punya akun? Login di sini</a>
+        <a href="/" class="panel-link">Kembali ke halaman awal</a>
+      </div>
+    </section>
+  </main>
+
+  <script src="/js/toast.js"></script>
+  <script src="/js/password-toggle.js"></script>
+  <script src="/js/customer-auth.js"></script>
+</body>
+</html>

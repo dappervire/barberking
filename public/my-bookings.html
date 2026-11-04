@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/images/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/style.css">
+  <title>Booking Saya</title>
+</head>
+<body>
+  <div class="dashboard-stripe"></div>
+  <div class="dashboard-container">
+    <div class="dashboard-header">
+      <div class="dashboard-brand">
+        <img src="/images/logo.svg" alt="Logo Barbershop" class="logo-small">
+        <h1>Booking Saya</h1>
+      </div>
+      <div class="account-actions">
+        <a href="/booking.html" class="account-link">Booking Baru</a>
+        <button type="button" id="customerLogout">Logout</button>
+      </div>
+    </div>
+
+    <p class="booking-note">Kamu bisa punya maksimal 2 booking aktif. Booking dihitung aktif kalau belum ditolak atau dibatalkan, dan jadwalnya belum lewat. Pembatalan paling lambat 1 jam sebelum jadwal. Riwayat booking dihapus otomatis 3 hari setelah tanggal booking.</p>
+    <div id="bookingList"></div>
+  </div>
+
+  <script src="/js/toast.js"></script>
+  <script src="/js/format.js"></script>
+  <script src="/js/customer-session.js"></script>
+  <script src="/js/my-bookings.js"></script>
+</body>
+</html>

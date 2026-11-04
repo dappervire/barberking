@@ -5,7 +5,11 @@ const pool = new Pool(
   process.env.DATABASE_URL
     ? {
         connectionString: process.env.DATABASE_URL,
-        ssl: { rejectUnauthorized: false }
+        ssl: { rejectUnauthorized: false },
+        // Connection pooler Supabase yang ngatur koneksi aslinya, jadi tiap instance cukup pegang sedikit.
+        max: 3,
+        idleTimeoutMillis: 10000,
+        connectionTimeoutMillis: 10000,
       }
     : {
         user: process.env.DB_USER,
@@ -15,5 +19,10 @@ const pool = new Pool(
         port: process.env.DB_PORT,
       }
 );
+
+// Tanpa handler ini, koneksi idle yang putus bakal bikin seluruh server crash.
+pool.on('error', (err) => {
+  console.error('DB pool error:', err.message);
+});
 
 module.exports = pool;

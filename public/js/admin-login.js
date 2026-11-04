@@ -16,10 +16,11 @@ form.addEventListener('submit', async (event) => {
             localStorage.setItem('token', result.token);
             window.location.href =  '/admin-dashboard.html';
         } else {
-            showToast('Username atau password salah.', 'error');
+            const result = await response.json().catch(() => ({}));
+            showToast(result.error || 'Login gagal. Coba lagi.', 'error');
         }
     } catch (error) {
         console.error('Error:', error);
-        showToast('Terjadi kesalan koneksi.', 'error')
+        showToast('Terjadi kesalahan koneksi.', 'error')
     }
 });

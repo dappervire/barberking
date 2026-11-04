@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/images/logo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Booking Barbershop</title>
+</head>
+<body>
+  <main class="split-layout">
+    <section class="brand-panel">
+      <img src="/images/logo.svg" alt="Logo Barbershop" class="logo">
+      <h1>Booking Barbershop</h1>
+      <p class="brand-tagline">Pilih layanan, tentukan jadwal, lalu tunggu konfirmasi dari kami.</p>
+
+      <div id="serviceSection" class="service-section" hidden>
+        <h2>Layanan</h2>
+        <ul id="serviceList" class="service-list"></ul>
+      </div>
+    </section>
+
+    <section class="form-panel">
+      <div class="form-panel-inner">
+        <div class="account-bar">
+          <span id="customerGreeting"></span>
+          <div class="account-actions">
+            <a href="/my-bookings.html" class="account-link">Booking Saya</a>
+            <button type="button" id="customerLogout">Logout</button>
+          </div>
+        </div>
+
+        <h2>Isi Data Booking</h2>
+
+        <form id="bookingForm" class="booking-form">
+          <div class="picker field-full" id="servicePicker">
+            <span class="picker-label" id="serviceLabel">Layanan:</span>
+            <input type="hidden" name="service_id">
+            <button type="button" class="picker-trigger" aria-haspopup="true" aria-expanded="false" aria-labelledby="serviceLabel serviceValue">
+              <span class="picker-value" id="serviceValue"></span>
+              <svg class="picker-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="picker-panel" hidden></div>
+          </div>
+
+          <div class="picker" id="datePicker">
+            <span class="picker-label" id="dateLabel">Tanggal:</span>
+            <input type="hidden" name="booking_date">
+            <button type="button" class="picker-trigger" aria-haspopup="true" aria-expanded="false" aria-labelledby="dateLabel dateValue">
+              <span class="picker-value" id="dateValue"></span>
+              <svg class="picker-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M8 3v4M16 3v4"/></svg>
+            </button>
+            <div class="picker-panel picker-panel-calendar" hidden></div>
+          </div>
+
+          <div class="picker" id="timePicker">
+            <span class="picker-label" id="timeLabel">Jam:</span>
+            <input type="hidden" name="booking_time">
+            <button type="button" class="picker-trigger" aria-haspopup="true" aria-expanded="false" aria-labelledby="timeLabel timeValue">
+              <span class="picker-value" id="timeValue"></span>
+              <svg class="picker-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></svg>
+            </button>
+            <div class="picker-panel" hidden></div>
+          </div>
+
+          <button type="submit">Booking</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <script src="/js/toast.js"></script>
+  <script src="/js/format.js"></script>
+  <script src="/js/service-list.js"></script>
+  <script src="/js/customer-session.js"></script>
+  <script src="/js/pickers.js"></script>
+  <script src="/js/booking.js"></script>
+</body>
+</html>

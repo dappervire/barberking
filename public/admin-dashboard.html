@@ -2,21 +2,34 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/images/logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/css/style.css">
   <title>Admin Dashboard</title>
 </head>
 <body>
+  <div class="dashboard-stripe"></div>
   <div class="dashboard-container">
     <div class="dashboard-header">
-      <h1>Admin Dashboard</h1>
+      <div class="dashboard-brand">
+        <img src="/images/logo.svg" alt="Logo Barbershop" class="logo-small">
+        <h1>Admin Dashboard</h1>
+      </div>
       <button id="logoutBtn">Logout</button>
     </div>
 
     <h2>Daftar Booking</h2>
     <div id="bookingList"></div>
+
+    <div id="pagination" class="pagination" hidden>
+      <button id="prevPageBtn">Sebelumnya</button>
+      <span id="pageInfo"></span>
+      <button id="nextPageBtn">Berikutnya</button>
+    </div>
   </div>
 
   <script src="/js/toast.js"></script>
+  <script src="/js/format.js"></script>
   <script src="/js/admin-dashboard.js"></script>
 </body>
 </html>
